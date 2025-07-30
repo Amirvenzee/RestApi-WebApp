@@ -11,7 +11,7 @@ namespace VILA.Api.Controllers
 
    
     [Route("api/v{version:apiVersion}/Detail")]
-    //[Route("api/detail")]
+    //[Route("api/detail")] $$Take Url From Header or Query
     //[ApiVersion("1.0")]
     [ApiController]
     public class DetailController : ControllerBase
