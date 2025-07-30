@@ -1,0 +1,162 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>VILA.Api</name>
+    </assembly>
+    <members>
+        <member name="M:VILA.Api.Controllers.DetailController.GetAllVilaDetails(System.Int32)">
+            <summary>
+            دریافت تمام جزییات ویلا
+            </summary>
+            <param name="vilaId">آی دی ویلا</param>
+            <returns></returns>
+        </member>
+        <member name="M:VILA.Api.Controllers.DetailController.GetById(System.Int32)">
+            <summary>
+            دریافت یک جز از ویلا
+            </summary>
+            <param name="detailId"> آی دی جز</param>
+            <returns></returns>
+        </member>
+        <member name="M:VILA.Api.Controllers.DetailController.Create(VILA.Api.Dtos.DetailDto)">
+            <summary>
+            افزدون جزییات جدید به ویلا
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VILA.Api.Controllers.DetailController.Update(System.Int32,VILA.Api.Dtos.DetailDto)">
+            <summary>
+            ویرایش جز ویلا
+            </summary>
+            <param name="detailId"> آی دی جز</param>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VILA.Api.Controllers.DetailController.Delete(System.Int32)">
+            <summary>
+            حذف جز ویلا
+            </summary>
+            <param name="detailId"> آی دی جز</param>
+            <returns></returns>
+        </member>
+        <member name="M:VILA.Api.Controllers.VilaController.GetAll">
+            <summary>
+            دریافت لیست تمام ویلا ها 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VILA.Api.Controllers.VilaController.GetDetails(System.Int32)">
+            <summary>
+            دریافت یک ویلا با آی دی ویلا
+            </summary>
+            <param name="id"> آی دی ویلا</param>
+            <returns></returns>
+            
+        </member>
+        <member name="M:VILA.Api.Controllers.VilaController.Create(VILA.Api.Dtos.VilaDto)">
+            <summary>
+            ایجاد یک ویلای جدید
+            </summary>
+            <param name="model"> اطلاعات ویلا (VilaDto)</param>
+            <returns></returns>
+        </member>
+        <member name="M:VILA.Api.Controllers.VilaController.Update(System.Int32,VILA.Api.Dtos.VilaDto)">
+            <summary>
+             ویرایش ویلا
+            </summary>
+            <param name="id"> آی دی ویلا</param>
+            <param name="model"> اطلاعات ویلا (VilaDto)</param>
+            <returns></returns>
+        </member>
+        <member name="M:VILA.Api.Controllers.VilaController.Delete(System.Int32)">
+            <summary>
+            حذف ویلا
+            </summary>
+            <param name="id">کلید ویلا</param>
+            <returns></returns>
+        </member>
+        <member name="P:VILA.Api.Dtos.VilaDto.DayPrice">
+            <summary>
+            (قیمت کرایه یک روز ویلا (تومان 
+            </summary>
+        </member>
+        <member name="P:VILA.Api.Dtos.VilaDto.SellPrice">
+            <summary>
+            قیمت فروش ویلا
+            </summary>
+        </member>
+        <member name="P:VILA.Api.Dtos.VilaDto.BuildDate">
+            <summary>
+            (تاریخ ساخت ویلا  (روز و ماه باید 2 رقمی باشد 
+            </summary>
+        </member>
+        <member name="T:VILA.Api.Migrations.AddVilaTable">
+            <inheritdoc />
+        </member>
+        <member name="M:VILA.Api.Migrations.AddVilaTable.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:VILA.Api.Migrations.AddVilaTable.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:VILA.Api.Migrations.AddVilaTable.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:VILA.Api.Migrations.ChangeTitleToName">
+            <inheritdoc />
+        </member>
+        <member name="M:VILA.Api.Migrations.ChangeTitleToName.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:VILA.Api.Migrations.ChangeTitleToName.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:VILA.Api.Migrations.ChangeTitleToName.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:VILA.Api.Migrations.addDetailmodel">
+            <inheritdoc />
+        </member>
+        <member name="M:VILA.Api.Migrations.addDetailmodel.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:VILA.Api.Migrations.addDetailmodel.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:VILA.Api.Migrations.addDetailmodel.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:VILA.Api.Migrations.AddSellAndDayPrice">
+            <inheritdoc />
+        </member>
+        <member name="M:VILA.Api.Migrations.AddSellAndDayPrice.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:VILA.Api.Migrations.AddSellAndDayPrice.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:VILA.Api.Migrations.AddSellAndDayPrice.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:VILA.WebApi.Controllers.CustomerController.Register(Vila.WebApi.CustomerModels.RegisterModel)">
+            <summary>
+            ثبت نام
+            </summary>
+            <param name="model"> موبایل و کلمه عبور</param>
+            <returns></returns>
+        </member>
+        <member name="M:VILA.WebApi.Controllers.CustomerController.Login(Vila.WebApi.CustomerModels.RegisterModel)">
+            <summary>
+            ورود به سایت
+            </summary>
+            <param name="login"> موبایل و کلمه عبور</param>
+            <returns></returns>
+        </member>
+        <member name="P:Vila.WebApi.Dtos.LoginResultDto.JwtSecret">
+            <summary>
+            توکن احراز هویت bearer
+            </summary>
+        </member>
+    </members>
+</doc>
