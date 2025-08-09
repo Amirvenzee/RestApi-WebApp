@@ -3,7 +3,7 @@
   * Copyright 2011-2024 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
   */
-import * as Popper from '@popperjs/core';
+import * as Popper from '@popper/Content/js/core';
 
 /**
  * --------------------------------------------------------------------------
