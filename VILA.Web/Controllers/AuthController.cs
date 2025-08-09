@@ -4,7 +4,7 @@ namespace VILA.Web.Controllers
 {
     public class AuthController : Controller
     {
-        //Comment
+        //Comment1
         public IActionResult Register()
         {
             return View();
