@@ -6,4 +6,12 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\Content\css\.DS_Store" />
+    <None Include="wwwroot\Content\fonts\.DS_Store" />
+    <None Include="wwwroot\Content\images\.DS_Store" />
+    <None Include="wwwroot\Content\scss\.DS_Store" />
+    <None Include="wwwroot\Content\scss\bootstrap\.DS_Store" />
+  </ItemGroup>
+
 </Project>
