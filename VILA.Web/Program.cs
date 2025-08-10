@@ -1,9 +1,14 @@
+using VILA.Web.Services.Customer;
 using VILA.Web.Utility;
 
 var builder = WebApplication.CreateBuilder(args);
 
 var services = builder.Services;
 services.AddControllersWithViews();
+
+#region Dependency
+services.AddTransient<ICustomerRepository, CustomerRepository>();
+#endregion
 
 #region ApiUrls
 var apiUrlsSection = builder.Configuration.GetSection("ApiUrls");
