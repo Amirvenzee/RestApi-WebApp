@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using VILA.Web.Models.Customer;
 
 namespace VILA.Web.Controllers
 {
@@ -7,6 +8,16 @@ namespace VILA.Web.Controllers
         //Comment1
         public IActionResult Register()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
             return View();
         }
     }
