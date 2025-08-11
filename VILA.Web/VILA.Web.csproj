@@ -22,4 +22,8 @@
     <None Include="wwwroot\Content\scss\bootstrap\.DS_Store" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
 </Project>
