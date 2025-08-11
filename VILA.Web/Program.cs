@@ -5,6 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 var services = builder.Services;
 services.AddControllersWithViews();
+services.AddHttpClient();
 
 #region Dependency
 services.AddTransient<ICustomerRepository, CustomerRepository>();
