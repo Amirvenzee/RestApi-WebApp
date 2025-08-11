@@ -24,15 +24,16 @@ namespace VILA.Web.Controllers
         public async Task<IActionResult> Register(RegisterModel model)
         {
             if (!ModelState.IsValid)
-            {
                 return View(model);
-            }
-          var res =  await _customer.Register(model);
+                 
+              var res =  await _customer.Register(model);
             if(res.result)
             {
-               return RedirectToAction("Index","Home");
+                TempData["success"] = true;
+               return View();
             }
-            return View();
+            ModelState.AddModelError("", res.Message);
+            return View(model);
         }
     }
 }
