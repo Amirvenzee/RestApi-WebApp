@@ -21,6 +21,54 @@ namespace VILA.Web.Services.Customer
             _client = client;
         }
 
+        public async Task<LoginResultModel> Login(RegisterModel model)
+        {
+            var url = $"{_urls.BaseAddress}{_urls.CustomerAddress}/Login";
+
+            var request = new HttpRequestMessage(HttpMethod.Post, url);
+
+
+            request.Content = new
+                StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
+
+            var myClient = _client.CreateClient();
+
+            HttpResponseMessage responseMessage = await myClient.SendAsync(request);
+
+
+            OperationResult operationResult = new();
+            CustomerModel customer = new();
+
+            if (responseMessage.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                var jsonString = await responseMessage.Content.ReadAsStringAsync();
+                customer = JsonConvert.DeserializeObject<CustomerModel>(jsonString);
+
+                operationResult.Result = true;
+                operationResult.Message = "ورود با موفقیت انجام شد .";
+            }
+            else if (responseMessage.StatusCode == System.Net.HttpStatusCode.BadRequest)
+            {
+                var jsonString = await responseMessage.Content.ReadAsStringAsync();
+                var modelError = JsonConvert.DeserializeObject<ErrorViewModel>(jsonString);
+
+                customer = null;
+                operationResult.Result = false;
+                operationResult.Message = modelError.Error;
+            }
+            else
+            {
+                customer = null;
+                operationResult.Result = false;
+                operationResult.Message = "خطای سمت سرور";
+            }
+            return new()
+            {
+                Customer = customer,
+                Result = operationResult
+            };
+        }
+
         public async Task<OperationResult> Register(RegisterModel model)
         {
             var url = $"{_urls.BaseAddress}{_urls.CustomerAddress}/Register";
@@ -37,7 +85,7 @@ namespace VILA.Web.Services.Customer
 
             if (responseMessage.StatusCode == System.Net.HttpStatusCode.Created)
             {
-                result.result = true;
+                result.Result = true;
                 result.Message = "";
                     
             }
@@ -45,13 +93,13 @@ namespace VILA.Web.Services.Customer
            {
              var jsonString = await responseMessage.Content.ReadAsStringAsync();
              var res = JsonConvert.DeserializeObject<ErrorViewModel>(jsonString);
-                result.result = false;
+                result.Result = false;
                 result.Message = res.Error;
 
            }
            else
            {
-                result.result = false;
+                result.Result = false;
                 result.Message = "خطای سمت سرور";
            }
 
