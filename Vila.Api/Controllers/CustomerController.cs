@@ -60,8 +60,8 @@ namespace VILA.WebApi.Controllers
 
             if (!_customer.PasswordIsCorrect(login.Mobile,login.Pass))
             {
-                ModelState.AddModelError("model.Mobile", "کاربری یافت نشد .");
-                return BadRequest(ModelState);
+               
+                return BadRequest(new {error = "کاربری یافت نشد."});
             }
             var user = _customer.Login(login.Mobile, login.Pass);
             if (user == null) return NotFound();
