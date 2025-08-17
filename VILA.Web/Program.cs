@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using VILA.Web.Services.Customer;
+using VILA.Web.Services.Vila;
 using VILA.Web.Utility;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +22,7 @@ builder.Services.AddSession(options =>
 
 #region Dependency
 services.AddTransient<ICustomerRepository, CustomerRepository>();
+services.AddTransient<IVilaRepository, VilaRepository>();
 #endregion
 
 #region ApiUrls
