@@ -37,10 +37,10 @@ if (!app.Environment.IsDevelopment())
    
     app.UseHsts();
 }
-app.UseSession();
 app.UseHttpsRedirection();
 app.UseRouting();
 app.UseAuthentication();
+app.UseSession();
 app.UseAuthorization();
 
 app.MapStaticAssets();
