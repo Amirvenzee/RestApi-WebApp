@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using VILA.Web.Services.Customer;
 using VILA.Web.Utility;
 
@@ -6,6 +7,17 @@ var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
 services.AddControllersWithViews();
 services.AddHttpClient();
+
+
+
+#region Session
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromSeconds(10);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+#endregion
 
 #region Dependency
 services.AddTransient<ICustomerRepository, CustomerRepository>();
@@ -25,7 +37,7 @@ if (!app.Environment.IsDevelopment())
    
     app.UseHsts();
 }
-
+app.UseSession();
 app.UseHttpsRedirection();
 app.UseRouting();
 app.UseAuthentication();
