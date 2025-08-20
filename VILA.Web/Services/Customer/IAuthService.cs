@@ -4,6 +4,6 @@
     {
 
         string GetJwtToken();
-        void Logout();
+        void Signout();
     }
 }

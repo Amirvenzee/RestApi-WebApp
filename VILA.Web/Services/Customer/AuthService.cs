@@ -20,9 +20,11 @@ namespace VILA.Web.Services.Customer
             return _context.HttpContext.User.Claims.FirstOrDefault(x => x.Type == "JWTSecret").Value;
         }
 
-        public void Logout()
+        public void Signout()
         {
             _context.HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
         }
     }
+      
 }
+
