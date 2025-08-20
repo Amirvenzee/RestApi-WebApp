@@ -34,6 +34,7 @@ builder.Services.AddSession(options =>
 #region Dependency
 services.AddTransient<ICustomerRepository, CustomerRepository>();
 services.AddTransient<IVilaRepository, VilaRepository>();
+services.AddTransient<IAuthService, AuthService>();
 #endregion
 
 #region ApiUrls
