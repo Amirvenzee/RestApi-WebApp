@@ -2,6 +2,8 @@
 {
     public interface IAuthService
     {
-        
+
+        string GetJwtToken();
+        void Logout();
     }
 }
