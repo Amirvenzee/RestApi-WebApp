@@ -9,7 +9,18 @@ var services = builder.Services;
 services.AddControllersWithViews();
 services.AddHttpClient();
 
-
+#region Auth
+services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(x =>
+    {
+        x.Cookie.HttpOnly = true;
+        x.ExpireTimeSpan = TimeSpan.FromDays(7);
+        x.LoginPath = "/Auth/Login";
+        x.LogoutPath = "/Auth/Logout";
+        x.AccessDeniedPath = "/Auth/NotAccess";
+    });
+services.AddHttpContextAccessor();
+#endregion
 
 #region Session
 builder.Services.AddSession(options =>
