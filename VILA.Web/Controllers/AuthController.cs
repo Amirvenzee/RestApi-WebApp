@@ -12,10 +12,12 @@ namespace VILA.Web.Controllers
     public class AuthController : Controller
     {
         private readonly ICustomerRepository _customer;
+        private readonly IAuthService _auth;
 
-        public AuthController(ICustomerRepository customer)
+        public AuthController(ICustomerRepository customer, IAuthService auth)
         {
             _customer = customer;
+            _auth = auth;
         }
 
         //Comment1
@@ -74,6 +76,16 @@ namespace VILA.Web.Controllers
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
             return Redirect("/");
+        }
+
+        public IActionResult Logout()
+        {
+            _auth.Logout();
+            return RedirectToAction("Login");
+        }
+        public IActionResult NotAccess()
+        {
+            return View();
         }
 
     }
