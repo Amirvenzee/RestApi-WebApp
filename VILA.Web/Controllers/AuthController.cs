@@ -80,7 +80,7 @@ namespace VILA.Web.Controllers
 
         public IActionResult Logout()
         {
-            _auth.Logout();
+            _auth.Signout();
             return RedirectToAction("Login");
         }
         public IActionResult NotAccess()
