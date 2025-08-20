@@ -10,8 +10,12 @@ services.AddControllersWithViews();
 services.AddHttpClient();
 
 #region Auth
-services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-    .AddCookie(x =>
+services.AddAuthentication(option =>
+{
+    option.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    option.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    option.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+}).AddCookie(x =>
     {
         x.Cookie.HttpOnly = true;
         x.ExpireTimeSpan = TimeSpan.FromDays(7);
