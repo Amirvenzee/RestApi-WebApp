@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using VILA.Web.Models;
@@ -17,6 +18,7 @@ namespace VILA.Web.Controllers
             _auth = auth;
         }
 
+        [Authorize]
         public async Task<IActionResult> Index(int pageId = 1 ,string filter = "", int take = 6)
         {
             // string token = HttpContext.Session.GetString("JWTSecret");
