@@ -73,7 +73,14 @@ namespace VILA.Web.Controllers
 
             var principal = new ClaimsPrincipal(identity);
 
-            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+            var properties = new AuthenticationProperties()
+            {
+
+                IsPersistent = true,
+                
+            };
+
+            await HttpContext.SignInAsync(principal,properties);
 
             return Redirect("/");
         }
