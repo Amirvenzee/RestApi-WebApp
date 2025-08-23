@@ -15,10 +15,25 @@
                 </p>
             </div>
         </div>
+
         <div class="row">
+            <form>
+                <input type="hidden" class="form-control" name="pageId" value="@Model.PageId" />
+                <div class="col-12 col-md-10">
+                    <input type="text" class="form-control" name="filter" value="@Model.Filter" />
+                </div>
+                <div class="col-12 col-md-2">
+                    <input type="submit" class="btn btn-outline-info" value="جست و جو" />
+                </div>
+            </form>
+        </div>
+            <div class="row">
+
 
             @if(Model != null)
             {
+                
+
                 if (Model.Vilas.Any())
                 {
                     foreach (var item in Model.Vilas)
@@ -56,9 +71,24 @@
                 
             }
 
-          
+            </div>
 
+        @if (Model.PageCount > 1)
+        {
+            <div class="row d-flex">
+                @for (var i = Model.StartPage; i <= Model.EndPage; i++)
+                {
+                    if (i == Model.PageId)
+                    {
+                        <a class="btn btn-primary">@i</a>
+                    }
+                    else
+                    {
+                        <a href="/Home/Index?filter=@Model.Filter&pageid=@i" class="btn btn-outline-primary">@i</a>
+                    }
+                }
 
-        </div>
+            </div>
+        }
     </div>
 </div>
