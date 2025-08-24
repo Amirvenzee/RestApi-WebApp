@@ -139,6 +139,18 @@
         <member name="M:VILA.Api.Migrations.AddSellAndDayPrice.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
+        <member name="T:VILA.Api.Migrations.AddImage">
+            <inheritdoc />
+        </member>
+        <member name="M:VILA.Api.Migrations.AddImage.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:VILA.Api.Migrations.AddImage.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:VILA.Api.Migrations.AddImage.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
         <member name="M:VILA.WebApi.Controllers.CustomerController.Register(Vila.WebApi.CustomerModels.RegisterModel)">
             <summary>
             ثبت نام
