@@ -14,6 +14,7 @@ namespace VILA.Api.Dtos
         public long DayPrice { get; set; }
         public long SellPrice { get; set; }
         public string BuildDate { get; set; }
+        public byte[] Image { get; set; }
         public List<DetailDto> Details { get; set; }
     }
 }

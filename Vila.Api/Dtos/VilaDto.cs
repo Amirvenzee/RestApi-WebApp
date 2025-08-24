@@ -49,5 +49,7 @@ namespace VILA.Api.Dtos
         [Required]
         [DateValidation]
         public string BuildDate { get; set; }
+
+        public byte[] Image { get; set; }
     }
 }

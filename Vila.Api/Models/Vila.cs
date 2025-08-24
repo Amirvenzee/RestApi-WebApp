@@ -36,7 +36,8 @@ namespace VILA.Api.Models
         [Required]
         public DateTime BuildDate { get; set; }
 
-    
+        public byte[]? Image { get; set; }
+
         public List<Detail> Details { get; set; }
 
     }
