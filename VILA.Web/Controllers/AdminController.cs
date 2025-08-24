@@ -6,7 +6,7 @@ namespace VILA.Web.Controllers
     [Authorize(Roles ="admin")]
     public class AdminController : Controller
     {
-        public IActionResult Index()
+        public IActionResult AllVilas()
         {
             return View();
         }
