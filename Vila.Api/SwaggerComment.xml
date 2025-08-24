@@ -76,6 +76,15 @@
             <param name="id">کلید ویلا</param>
             <returns></returns>
         </member>
+        <member name="M:VILA.Api.Controllers.VilaV2Controller.Search(System.Int32,System.String,System.Int32)">
+            <summary>
+            جست وجوی ویلا
+            </summary>
+            <param name="pageId">صفحه چندم ؟</param>
+            <param name="filter">متن جست وجو</param>
+            <param name="take">تعداد نمایش</param>
+            <returns></returns>
+        </member>
         <member name="P:VILA.Api.Dtos.VilaDto.DayPrice">
             <summary>
             (قیمت کرایه یک روز ویلا (تومان 

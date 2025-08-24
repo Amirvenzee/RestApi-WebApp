@@ -21,8 +21,14 @@ namespace VILA.Api.Controllers
             _vila = vila;
         }
 
+        /// <summary>
+        /// جست وجوی ویلا
+        /// </summary>
+        /// <param name="pageId">صفحه چندم ؟</param>
+        /// <param name="filter">متن جست وجو</param>
+        /// <param name="take">تعداد نمایش</param>
+        /// <returns></returns>
         [HttpGet]
-       
         [ProducesResponseType(200,Type = typeof(VilaPaging))]
         [ProducesResponseType(400)]
        
