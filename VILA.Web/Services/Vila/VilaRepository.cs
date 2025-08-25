@@ -6,18 +6,19 @@ using System.Text;
 using VILA.Web.Models;
 using VILA.Web.Models.Customer;
 using VILA.Web.Models.Vila;
+using VILA.Web.Services.Generic;
 using VILA.Web.Utility;
 
 namespace VILA.Web.Services.Vila
 {
-    public class VilaRepository:IVilaRepository
+    public class VilaRepository:Repository<VilaModel>, IVilaRepository
     {
         private readonly ApiUrls _urls;
 
         //برای فرستادن ریکویست استفاده میشه 
         private readonly IHttpClientFactory _client;
 
-        public VilaRepository(IOptions<ApiUrls> apiUrls, IHttpClientFactory client)
+        public VilaRepository(IOptions<ApiUrls> apiUrls, IHttpClientFactory client):base(client)
         {
             _urls = apiUrls.Value;
             _client = client;
