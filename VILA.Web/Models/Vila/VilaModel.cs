@@ -4,7 +4,7 @@ namespace VILA.Web.Models.Vila
 {
     public class VilaModel
     {
-        public int VilaId { get; set; }
+        public int Id { get; set; }
         [Display(Name = "نام ویلا")]
         [Required(ErrorMessage = "نام ویلا اجباری است")]
         [MaxLength(255, ErrorMessage = "نام ویلا نباید بیش از 255 حرف باشد")]
