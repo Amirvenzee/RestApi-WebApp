@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using System.Threading.Tasks;
+using VILA.Web.Models.Vila;
 using VILA.Web.Services.Customer;
 using VILA.Web.Services.Vila;
 using VILA.Web.Utility;
@@ -30,6 +31,53 @@ namespace VILA.Web.Controllers
             var url = $"{_apiurl.BaseAddress}{_apiurl.VilaV1Address}";
             var model = await _vila.GetAll(url, seccret);
             return View(model);
+        }
+
+        public IActionResult AddVila()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddVila(VilaModel vila, IFormFile picture)
+        {
+            if (!ModelState.IsValid) return View(vila);
+
+            try
+            {
+                DateTime date = vila.BuildDate.ToEnglishDateTime();
+            }
+            catch
+            {
+                ModelState.AddModelError("BuildDate", "فرمت ناریخ باید 1365/04/01 باشد.");
+                return View(vila);
+            }
+
+            if (picture == null || !picture.IsImage())
+            {
+                ModelState.AddModelError("Image", "لطفا عکس با فرمت jpg واردکنید .");
+                return View(vila);
+            }
+
+            //convert picture to byte[]
+
+            using (var open = picture.OpenReadStream())
+            using (var ms = new MemoryStream())
+            {
+                open.CopyTo(ms);
+                vila.Image = ms.ToArray();
+            }
+
+
+            var secret = _auth.GetJwtToken();
+            var url = _apiurl.BaseAddress + _apiurl.VilaV1Address;
+
+            bool create = await _vila.Create(url, secret, vila);
+
+            if (create)
+                TempData["success"] = true;
+
+            return RedirectToAction("AllVilas");
         }
     }
 }
