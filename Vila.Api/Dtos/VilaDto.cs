@@ -50,6 +50,6 @@ namespace VILA.Api.Dtos
         [DateValidation]
         public string BuildDate { get; set; }
 
-        public byte[] Image { get; set; }
+        public byte[]? Image { get; set; }
     }
 }
