@@ -21,6 +21,7 @@ namespace VILA.Api.Mappings
                 Name = vila.Name,
                 DayPrice = vila.DayPrice,
                 SellPrice = vila.SellPrice,
+                Image = vila.Image,
 
             };
         }
@@ -38,6 +39,7 @@ namespace VILA.Api.Mappings
                 Name = vila.Name,
                 DayPrice = vila.DayPrice,
                 SellPrice = vila.SellPrice,
+                Image = vila.Image,
 
             };
         }
@@ -57,8 +59,10 @@ namespace VILA.Api.Mappings
                 Address = x.Address,
                 Id = x.Id,
                 BuildDate = x.BuildDate.ToPersainDate(),
+                Image = x.Image,
+                 
 
-                Details = x.Details.Select(s=>new DetailDto
+                 Details = x.Details.Select(s=>new DetailDto
                 {
                     DetailId = s.Id,
                     Value = s.Value,
