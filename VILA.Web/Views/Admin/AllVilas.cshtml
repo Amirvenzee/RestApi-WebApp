@@ -21,7 +21,7 @@
                <thead>
                    <tr>
                        <td>شماره</td>
-                       @* <td>تصویر</td> *@
+                        <td>تصویر</td> 
                        <td>نام ویلا</td>
                        <td>شهرستان</td>
                        <td></td>
@@ -32,13 +32,17 @@
                 {
                      <tr>
                          <td>@item.Id</td>
- @*                         <td>
+                         <td>
                             @{
-                                var image = Convert.ToBase64String(item.Image);
-                                var src = string.Format("data:image/jpg;base64,{0}", image);
+                                if(item.Image != null)
+                                {
+                                    var image = Convert.ToBase64String(item.Image);
+                                    var src = string.Format("data:image/jpg;base64,{0}", image);
+                                    <img class="img-thumbnail" style="width:120px" src="@src" />
+                                }                            
                             }
-                            <img class="img-thumbnail" style="width:120px" src="@src" />
-                         </td> *@
+                           
+                         </td>
                          <td>
                              @item.Name
                          </td>
