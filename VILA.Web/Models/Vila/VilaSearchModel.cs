@@ -13,6 +13,7 @@ namespace VILA.Web.Models.Vila
         public long DayPrice { get; set; }
         public long SellPrice { get; set; }
         public string BuildDate { get; set; }
+        public byte[] Image { get; set; }
         public List<DetailModel> Details { get; set; }
     }
 }
