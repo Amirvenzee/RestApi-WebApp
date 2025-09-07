@@ -40,24 +40,40 @@
                     {
                         <div class="col-lg-4 col-md-6 mb-5">
                             <div class="product-item">
-                                <figure>
-                                    <img src="/Content/images/model_1_bg.jpg" alt="Image" class="img-fluid">
+                                <figure>                                   
+                                    @{
+                                        if(item.Image != null)
+                                        {
+                                            var image = Convert.ToBase64String(item.Image);
+                                            var src = string.Format("data:image/jpg;base64,{0}", image);
+                                            <img src="@src" alt="@item.Name" class="img-fluid">
+                                        }
+                                        else
+                                        {
+                                            <img src="/Content/images/model_1_bg.jpg" alt="Image" class="img-fluid">
+                                        }
+
+                                    }                                                                    
                                 </figure>
                                 <div class="px-4">
                                     <h3><a href="#">@item.Name </a></h3>
                                     <div class="mb-3">
                                         <span class="meta-icons mr-3">
                                             <a href="#" class="mr-2">
-                                                <span class="icon-star text-warning"></span>
+                                                
                                             </a> @item.State
                                         </span>
                                         <span class="meta-icons wishlist">
                                             <a href="#" class="mr-2">
-                                                <span class="icon-heart"></span>
+                                                
                                             </a> @item.City
                                         </span>
                                     </div>
                                     <p class="mb-4">@item.Address</p>
+                                    <p class="mb-4">شماره تماس :  @item.Mobile</p>
+                                    <p class="mb-4">کرایه روزانه :  @item.DayPrice.ToString("#,0") تومان</p>
+                                    <p class="mb-4"> قیمت فروش : @item.SellPrice.ToString("#,0") تومان</p>
+
 
                                     <div>
                                         <a href="#" class="btn btn-black mr-1 rounded-0">افزودن به سبد خرید</a>
