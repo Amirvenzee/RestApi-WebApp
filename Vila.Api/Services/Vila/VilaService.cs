@@ -45,6 +45,7 @@ namespace VILA.Api.Services.Vila
                 Name = x.Name,
                 SellPrice = x.SellPrice,
                 DayPrice = x.DayPrice,
+                Image = x.Image,
             }).ToList();
 
            
