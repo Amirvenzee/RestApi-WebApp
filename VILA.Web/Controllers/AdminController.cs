@@ -79,5 +79,58 @@ namespace VILA.Web.Controllers
 
             return RedirectToAction("AllVilas");
         }
+
+        public async Task<IActionResult> EditVila(int id)
+        {
+            var seccret = _auth.GetJwtToken();
+            var url = $"{_apiurl.BaseAddress}{_apiurl.VilaV1Address}/GetDetails/{id}";
+            var model = await _vila.GetById(url, seccret);
+            return View(model);
+        }
+        [HttpPost]
+        public async Task<IActionResult> EditVila(int id,VilaModel vila, IFormFile? picture)
+        {
+            if (!ModelState.IsValid) return View(vila);
+           if(picture != null)
+            {
+                if (!picture.IsImage())
+                {
+                    ModelState.AddModelError("Image", "لطفا عکس با فرمت jpg واردکنید .");
+                    return View(vila);
+                }
+            }
+            //convert picture to byte[]
+
+            using (var open = picture.OpenReadStream())
+            using (var ms = new MemoryStream())
+            {
+                open.CopyTo(ms);
+                vila.Image = ms.ToArray();
+            }
+
+
+            var secret = _auth.GetJwtToken();
+            var url = $"{_apiurl.BaseAddress}{_apiurl.VilaV1Address}/{id}";
+
+            bool update = await _vila.Update(url, secret, vila);
+
+            if (update)
+                TempData["success"] = true;
+
+            return RedirectToAction("AllVilas");
+        }
+
+        public async Task<IActionResult> DeleteVila(int id)
+        {
+            var secret = _auth.GetJwtToken();
+            var url = $"{_apiurl.BaseAddress}{_apiurl.VilaV1Address}/{id}";
+
+            bool delete = await _vila.Delete(url, secret);
+
+            if (delete)
+                TempData["success"] = true;
+
+            return RedirectToAction("AllVilas");
+        }
     }
 }
