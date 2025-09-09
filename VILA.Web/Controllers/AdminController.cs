@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using System;
+using System.Reflection;
 using System.Threading.Tasks;
+using VILA.Web.Models.Detail;
 using VILA.Web.Models.Vila;
 using VILA.Web.Services.Customer;
 using VILA.Web.Services.Detail;
@@ -153,6 +155,76 @@ namespace VILA.Web.Controllers
             ViewData["vila"] = vila;
             return View(model);
                       
+        }
+        public IActionResult CreateVilaDetail(int id)
+        {
+            DetailModel model = new DetailModel() {VilaId = id };
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateVilaDetail(int id,DetailModel model)
+        {
+            if(id != model.VilaId) return BadRequest();
+            if(!ModelState.IsValid)return View(model);
+
+            var secret = _auth.GetJwtToken();
+            string url = $"{_apiurl.BaseAddress}{_apiurl.VilaDetailAddress}";
+
+            var create = await _detail.Create(url, secret, model);
+
+            if (create)
+            TempData["success"] = true;
+                return Redirect($"/Admin/GetVilaDetails/{model.VilaId}");
+         
+
+        }
+        
+        public async Task<IActionResult> EditVilaDetail(int id)
+        {
+            var secret = _auth.GetJwtToken();
+            var url = $"{_apiurl.BaseAddress}{_apiurl.VilaDetailAddress}/GetById/{id}";
+
+            var model = await _detail.GetById(url, secret);
+            if(model == null) return NotFound();
+
+            return View(model);
+
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditVilaDetail(int id, DetailModel model)
+        {
+            if (id != model.DetailId) return BadRequest();
+            if (!ModelState.IsValid) return View(model);
+
+            var secret = _auth.GetJwtToken();
+            string url = $"{_apiurl.BaseAddress}{_apiurl.VilaDetailAddress}/{model.DetailId}";
+
+            var Edit = await _detail.Update(url, secret, model);
+
+            if (Edit)
+                TempData["success"] = true;
+            return Redirect($"/Admin/GetVilaDetails/{model.VilaId}");
+
+
+        }
+
+        public async Task<IActionResult> DeleteVilaDetail(int id)
+        {
+            var secret = _auth.GetJwtToken();
+            string urlGet = $"{_apiurl.BaseAddress}{_apiurl.VilaDetailAddress}/GetById/{id}";
+            var model = await _detail.GetById(urlGet, secret);
+            
+
+            var url = $"{_apiurl.BaseAddress}{_apiurl.VilaDetailAddress}/{id}";
+            bool delete = await _detail.Delete(url, secret);
+
+            if(delete)
+            TempData["success"] = true;
+
+            return Redirect($"/Admin/GetVilaDetails/{model.VilaId}");
+
         }
     }
 }
