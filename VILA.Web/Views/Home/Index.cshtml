@@ -40,13 +40,15 @@
                     {
                         <div class="col-lg-4 col-md-6 mb-5">
                             <div class="product-item">
+
+                                
                                 <figure>                                   
                                     @{
                                         if(item.Image != null)
                                         {
                                             var image = Convert.ToBase64String(item.Image);
                                             var src = string.Format("data:image/jpg;base64,{0}", image);
-                                            <img src="@src" alt="@item.Name" class="img-fluid">
+                                            <img  src="@src" alt="@item.Name" class="img-fluid">
                                         }
                                         else
                                         {
@@ -73,10 +75,11 @@
                                     <p class="mb-4">شماره تماس :  @item.Mobile</p>
                                     <p class="mb-4">کرایه روزانه :  @item.DayPrice.ToString("#,0") تومان</p>
                                     <p class="mb-4"> قیمت فروش : @item.SellPrice.ToString("#,0") تومان</p>
+                                
 
 
-                                    <div>                                        
-                                        <a href="#" class="btn btn-black btn-outline-black ml-1 rounded-0">دیدن</a>
+                                    <div>
+                                        <a asp-action="VilaPage" asp-route-id="@item.Id" class="btn btn-black btn-outline-black ml-1 rounded-0">دیدن</a>
                                     </div>
                                 </div>
                             </div>

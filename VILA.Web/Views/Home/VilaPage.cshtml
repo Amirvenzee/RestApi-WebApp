@@ -1,0 +1,124 @@
+﻿@model VILA.Web.Models.Vila.VilaDetail
+
+@{
+    ViewData["vila"] = Model.Name;
+}
+
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+
+    <style>
+        body {
+            font-family: Tahoma, sans-serif;
+            direction: rtl;
+        }
+
+        .villa-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            
+        }
+
+        .villa-image img {
+            width: 800px;
+            height: 800px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        /* کانتینر برای جدول با اسکرول */
+         .villa-details {
+            max-height: 700px; /* ارتفاع قابل تغییر */
+           
+            overflow-y: auto; /* اسکرول عمودی */
+            overflow-x: auto; /* اسکرول افقی */
+      
+        } 
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #999;
+            padding: 10px;
+            text-align: right;
+        }
+
+        th {
+            background: #f5f5f5;
+            font-weight: bold;
+            width: 120px;
+        }
+    </style>
+</head>
+<body>
+    <div class="villa-container">
+        <!-- عکس ویلا -->
+        <div class="villa-image">
+            @{
+                if (Model.Image != null)
+                {
+                    var image = Convert.ToBase64String(Model.Image);
+                    var src = string.Format("data:image/jpg;base64,{0}", image);
+                    <img src="@src" alt="@Model.Name" class="img-fluid">
+                }
+                else
+                {
+                    <img src="/Content/images/model_1_bg.jpg" alt="Image" class="img-fluid">
+                }
+            }
+        </div>
+
+        <!-- جدول مشخصات -->
+        <div class="villa-details">
+            <table>
+                <tr>
+                    <th>نام ویلا</th>
+                    <td>@Model.Name</td>
+                </tr>
+                <tr>
+                    <th>آدرس</th>
+                    <td>@Model.address</td>
+                </tr>
+                <tr>
+                    <th>شهر</th>
+                    <td>@Model.City</td>
+                </tr>
+                <tr>
+                    <th>استان</th>
+                    <td>@Model.State</td>
+                </tr>
+                <tr>
+                    <th>کرایه روزانه</th>
+                    <td>@Model.DayPrice</td>
+                </tr>
+                @foreach (var item in Model.Detail)
+                {
+                    <tr>
+                        <th>@item.What</th>
+                        <td>@item.Value</td>
+                    </tr>
+                }
+                <tr>
+                    <th>تاریخ ساخت</th>
+                    <td>@Model.BuildDate</td>
+                </tr>
+                <tr>
+                    <th>تلفن</th>
+                    <td>@Model.Mobile</td>
+                </tr>
+                <tr>
+                    <th>قیمت خرید</th>
+                    <td>@Model.SellPrice</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
