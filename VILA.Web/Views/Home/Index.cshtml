@@ -38,6 +38,7 @@
                 {
                     foreach (var item in Model.Vilas)
                     {
+                        <a asp-action="VilaPage" asp-route-id="@item.Id">
                         <div class="col-lg-4 col-md-6 mb-5">
                             <div class="product-item">
 
@@ -48,7 +49,7 @@
                                         {
                                             var image = Convert.ToBase64String(item.Image);
                                             var src = string.Format("data:image/jpg;base64,{0}", image);
-                                            <img  src="@src" alt="@item.Name" class="img-fluid">
+                                           <img  src="@src" alt="@item.Name" class="img-fluid">
                                         }
                                         else
                                         {
@@ -58,7 +59,7 @@
                                     }                                                                    
                                 </figure>
                                 <div class="px-4">
-                                    <h3><a href="#">@item.Name </a></h3>
+                                    <h3><a asp-action="VilaPage" asp-route-id="@item.Id">@item.Name </a></h3>
                                     <div class="mb-3">
                                         <span class="meta-icons mr-3">
                                             <a href="#" class="mr-2">
@@ -84,6 +85,7 @@
                                 </div>
                             </div>
                         </div>
+                        </a>
                     }
                 }
                 
