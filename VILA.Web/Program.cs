@@ -8,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 var services = builder.Services;
 services.AddControllersWithViews();
+services.AddCors();
 services.AddHttpClient();
 
 #region Auth
@@ -58,6 +59,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 app.UseHttpsRedirection();
+app.UseCors(x => x.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 app.UseRouting();
 app.UseAuthentication();
 app.UseSession();

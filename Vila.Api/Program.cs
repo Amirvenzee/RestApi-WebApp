@@ -19,7 +19,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 var services = builder.Services;
-
+services.AddCors();
 services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
@@ -120,6 +120,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseDeveloperExceptionPage();
 app.UseHttpsRedirection();
+app.UseCors(x => x.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 app.UseAuthentication();
 app.UseAuthorization();
 
