@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using VILA.Web.Services.Customer;
+using VILA.Web.Services.Detail;
 using VILA.Web.Services.Vila;
 using VILA.Web.Utility;
 
@@ -38,6 +39,7 @@ builder.Services.AddSession(options =>
 #region Dependency
 services.AddTransient<ICustomerRepository, CustomerRepository>();
 services.AddTransient<IVilaRepository, VilaRepository>();
+services.AddTransient<IDetailRepository, DetailRepository>();
 services.AddTransient<IAuthService, AuthService>();
 #endregion
 
