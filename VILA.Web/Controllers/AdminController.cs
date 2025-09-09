@@ -1,9 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
+using System;
 using System.Threading.Tasks;
 using VILA.Web.Models.Vila;
 using VILA.Web.Services.Customer;
+using VILA.Web.Services.Detail;
 using VILA.Web.Services.Vila;
 using VILA.Web.Utility;
 
@@ -14,15 +16,19 @@ namespace VILA.Web.Controllers
     {
         private readonly IAuthService _auth;
         private readonly IVilaRepository _vila;
+        private readonly IDetailRepository _detail;
         private readonly ApiUrls _apiurl;
 
 
-        public AdminController(IAuthService auth, IVilaRepository vila,IOptions<ApiUrls> url)
+        public AdminController(IAuthService auth, IVilaRepository vila, IOptions<ApiUrls> url, IDetailRepository detail)
         {
             _auth = auth;
             _vila = vila;
             _apiurl = url.Value;
+            _detail = detail;
         }
+
+        #region Vila
 
 
         public async Task<IActionResult> AllVilas()
@@ -131,6 +137,22 @@ namespace VILA.Web.Controllers
                 TempData["success"] = true;
 
             return RedirectToAction("AllVilas");
+        }
+
+        #endregion
+
+        public async Task<IActionResult> GetVilaDetails(int id)
+        {
+            var secret = _auth.GetJwtToken();
+            string vilaUrl = $"{_apiurl.BaseAddress}{_apiurl.VilaV1Address}/GetDetails/{id}";
+            var vila = await _vila.GetById(vilaUrl, secret);
+            if (vila == null) return NotFound();
+
+            var url = $"{_apiurl.BaseAddress}{_apiurl.VilaDetailAddress}/GetAllVilaDetails/{id}";
+            var model = await _detail.GetAll(url, secret);
+            ViewData["vila"] = vila;
+            return View(model);
+                      
         }
     }
 }
