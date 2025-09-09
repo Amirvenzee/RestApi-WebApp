@@ -143,6 +143,9 @@ namespace VILA.Web.Controllers
 
         #endregion
 
+        #region Detail
+
+       
         public async Task<IActionResult> GetVilaDetails(int id)
         {
             var secret = _auth.GetJwtToken();
@@ -226,5 +229,6 @@ namespace VILA.Web.Controllers
             return Redirect($"/Admin/GetVilaDetails/{model.VilaId}");
 
         }
+        #endregion
     }
 }
