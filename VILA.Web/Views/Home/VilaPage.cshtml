@@ -30,31 +30,40 @@
             border-radius: 8px;
         }
 
-        /* کانتینر برای جدول با اسکرول */
-         .villa-details {
-            max-height: 700px; /* ارتفاع قابل تغییر */
-           
+        .villa-details {
+            flex: 1; /* فضای باقیمانده کنار عکس رو بگیره */
+            max-height: 600px; /* ارتفاع محدود */
             overflow-y: auto; /* اسکرول عمودی */
-            overflow-x: auto; /* اسکرول افقی */
-      
-        } 
-
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        td, th {
-            border: 1px solid #999;
+            overflow-x: hidden; /* اسکرول افقی نیاد */
+            border: 1px solid #ccc;
+            border-radius: 8px;
             padding: 10px;
-            text-align: right;
+            background: #fff;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         }
 
-        th {
-            background: #f5f5f5;
-            font-weight: bold;
-            width: 120px;
-        }
+            /* جدول واکنش‌گرا */
+            .villa-details table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            .villa-details th,
+            .villa-details td {
+                border: 1px solid #ddd;
+                padding: 8px;
+                text-align: right;
+                font-size: 14px;
+            }
+
+            .villa-details th {
+                background: #f5f5f5;
+                font-weight: bold;
+                white-space: nowrap;
+            }
+
+
+       
     </style>
 </head>
 <body>
