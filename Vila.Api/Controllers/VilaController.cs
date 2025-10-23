@@ -79,7 +79,9 @@ namespace VILA.Api.Controllers
 
         //Admin Token
         //
-        //eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjIiLCJyb2xlIjoiYWRtaW4iLCJuYmYiOjE3NTU2MDg0MDMsImV4cCI6MTc1NjIxMzIwMywiaWF0IjoxNzU1NjA4NDAzLCJpc3MiOiJWZW56ZWUiLCJhdWQiOiJ3ZWJBcGkifQ.ogEwxSSL9pSwtsusLAxmnNhQiW3nchUaFjpciW37k04
+        //eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6IjIiLCJyb2xlIjoiYWRtaW4iLCJuYmYiOjE3NjEyMjU5NDEsImV4cCI6MTc2MTgzMDc0MSwiaWF0IjoxNzYxMjI1OTQxLCJpc3MiOiJWZW56ZWUiLCJhdWQiOiJ3ZWJBcGkifQ.hh7eeHOg2xMIDctGVYa3IKqIG4lkdCFFSE9MvAK_Nog
+
+
         //
 
         /// <summary>
